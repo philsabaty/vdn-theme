@@ -1,0 +1,269 @@
+/*
+Theme Name: VDN Theme
+Theme URI: https://www.themeisle.com/ 
+Description: A child theme for VDN based on Zerif-Lite
+Author: Philippe Sabaty for BSF
+Author URI: https://www.malt.fr/profile/philippesabaty
+Template: zerif-lite
+Version: 0.1 
+*/
+
+.vdn_nonbsf_disclaimer{
+    margin:10px 30px;
+    padding:20px;
+    border:1px #ea5951 solid;
+    background-color:#eee;
+}
+
+ul.ui-autocomplete{
+   text-align:left;
+}
+
+.type-post .byline{
+    display: initial !important;
+}
+
+.clubContainer{
+	text-align:left;
+}
+
+.info_club ul li{
+    margin-top:10px;
+}
+.info_club ul li h4{
+    font-weight : bold;
+    margin-bottom: 2px;
+    margin-top: 20px;
+}
+.info_club ul li label{
+    margin-top:10px;
+    font-weight : normal;
+}
+.info_club ul li{
+    margin-top:10px;
+}
+.color_bsf_1, .color_bsf_1 a {color:#404040;}
+.color_bsf_2, .color_bsf_2 a {color:#5171b6;}
+.color_bsf_3, .color_bsf_3 a {color:#ea5951;}
+.color_bsf_4, .color_bsf_4 a {color:#708090;}
+
+.noresult{
+    font-style:italic;
+}
+
+.bloc_d_items {/*
+    border-width:1px 0 0 1px;
+    border-color:#404040;
+    border-style:solid;*/
+}
+.bloc_d_items h3{
+    margin-bottom:4px;
+}
+.bloc_d_items a.moreresults{
+    font-style:italic;
+    margin-top:3px;
+    color:#cb4332;;
+}
+.bloc_d_items ul{
+    margin-left:20px;
+    list-style-image: url('./assets/images/chevron_h15.png');
+}
+.bloc_d_items ul li:before{
+    content: none;
+    margin-top:0;
+}
+.bloc_d_items ul li{
+    margin-top: 1px;
+    margin-bottom: 1px;
+    margin-left: 1px;
+    list-style-image: url('./assets/images/chevron_h15.png');
+}
+
+.color_bsf_1.bloc_d_items ul{list-style-image: url('./assets/images/chevron_h15_color4.png');}
+.color_bsf_2.bloc_d_items ul{list-style-image: url('./assets/images/chevron_h15_color2.png');}
+.color_bsf_3.bloc_d_items ul{list-style-image: url('./assets/images/chevron_h15_color3.png');}
+.color_bsf_4.bloc_d_items ul{list-style-image: url('./assets/images/chevron_h15_color1.png');}
+
+.bloc_recherche_fiche{
+    border:1px #ddd solid;
+    height:180px;
+}
+
+blockquote.fiche-meta {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    padding-left: 15px;
+    border-left: 3px solid #e96656;
+    font-size: 18px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 26px;
+}
+
+.zone_recherche_ressources{
+    border:1px #ea5951 solid;
+    padding-top:15px;
+    padding-bottom:15px;
+    margin-bottom:15px;
+    text-align:left;
+}
+
+main.category-fiches-thematiques article.hentry{
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.tag_by_club,
+.tag_by_BSF{
+    font-size: 10px;
+    padding:4px;
+    margin:4px;
+    text-align:center;
+    cursor:default;
+    color:#fff;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+.tag_by_BSF{background-color: #ea5951;}
+.tag_by_club{background-color: #5171b6;}
+/* 
+	WP autosearch settings.
+	some color settings are restricted to pro version.
+	Other ones are set from admin panel
+	(using "body" to get css priority)
+*/
+body .wp_autosearch_form_wrapper{
+	border-color : #eb5c38 !important;
+}
+body .wp_autosearch_submit:hover{
+    background-image:url('./assets/images/search-icon.png') !important;
+}
+body .wp_autosearch_submit:active,
+body .wp_autosearch_submit:visited,
+body .wp_autosearch_submit{
+	background-image:url('./assets/images/search-icon_a50.png') !important;
+}
+
+#event_organizer.tribe-events-community-details,
+#tribe-events-content.tribe-events-list a.tribe-events-ical.tribe-events-button,
+body.single-tribe_events .tribe-events-cal-links a.tribe-events-gcal,
+body.single-tribe_events .tribe-events-cal-links a.tribe-events-ical {
+    display: none !important;
+}
+
+/* Customs for Plugin WP Contact Form 7
+*/
+
+.wpcf7-form input[type=text],
+.wpcf7-form input[type=email],
+.wpcf7-form select,
+.wpcf7-form textarea,
+form.vdn_club_creation_form input[type=text],
+form.vdn_club_creation_form input[type=email],
+form.vdn_club_creation_form select,
+form.vdn_club_creation_form textarea
+{
+    width:500px;
+    border-color:rgb(230,230,230);
+}
+
+/* Styles that seem lost by last zerif theme update START
+*/
+/* Accordion Styles */
+.accordion {
+    border: 0px solid #dbdbdb;
+    margin-bottom: 0px;
+}
+.accordion-title {
+    border: 1px solid #7d7d7d ;
+    background-color: #e2e1e1;
+    font-size:20px;
+    font-weight: 100;
+    margin: 0;
+    padding: 10px 10px;
+    cursor: pointer;
+}
+.accordion-title:hover {background-color: #fc644a; color: #ffffff;
+}
+.accordion-title:first-child {}
+.accordion-title.open {cursor: default;}
+.accordion-content { padding: 10px 10px 0px 10px; border: 1px solid #dbdbdb; font-size:13px }
+
+div #foot2 {
+    background-color:#3e3e3e;
+    margin-top : 20px;
+    padding-left : 30px;
+    padding-bottom : 30px
+font-color:#e5e4e4;
+    font-size: 12px;
+    text-align : left;
+
+
+}
+#foot2 a:hover  {color: #ffffff !important;}
+#foot2 a:link {color: #e5e4e4 !important;}
+
+
+body .entry-title {
+    font-size: 40px;
+    line-height:44px
+}
+
+
+.button2 {
+     display: inline-block;
+     margin: 5px 5px 5px 5px;
+     padding: 2px 10px 2px 10px;
+     border-radius: 6px;
+     text-align: center;
+ 	text-transform: uppercase;
+ }
+
+body .navbar-inverse .navbar-nav > li > a {
+	line-height: 50px;
+}
+
+body .separator-one {
+	background: rgba(81, 113, 182, 0.8);
+}
+body .separator-one .green-btn {
+	background: #db5a4a;
+}
+body .separator-one .green-btn:hover {
+	background: #bf3928;
+}
+
+body .about-us p {
+	color: #a9a9a9;
+	font-size: 15px;
+}
+
+.contact-us .custom-button {
+	float: right;
+	margin-right: 15px;
+}
+
+body .copyright {
+    width: 100%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+/* Styles that seem lost by last zerif theme update END
+*/
+
+a.simplefavorite-button{
+    cursor: pointer;
+}
+
+.vdn-profile .um-name{
+    display:none;
+}
+
+.vdn-profile .um-header.no-cover{
+    padding-bottom: 0;
+    border-bottom-width:0;
+}
