@@ -16,3 +16,4 @@ https://github.com/philsabaty/vdn-companion
 * Added author link in fiches
 * Fixed broken upload window in admin / WP Advanced PDF / header
 * Added custom html/css design for CPT Fiche
+* Added custom images for CPT Fiche design
