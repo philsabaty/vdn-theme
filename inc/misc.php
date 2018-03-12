@@ -9,7 +9,7 @@
 add_filter( 'gettext', 'cyb_filter_gettext', 10, 3 );
 function cyb_filter_gettext( $translated, $original, $domain ) {
     if ( $original == "It looks like nothing was found at this location. Maybe try one of the links below or a search?" ) {
-        $translated = "Contenu Introuvable. L'outil de Recherche ci-contre vous remettra peut-être sur la voie...";
+        $translated = "Contenu Introuvable. <br/>\n Peut-être que le contenu recherché n'est accessible qu'une fois connecté avec votre compte.";
     }
     if ( $original == "Oops! That page can&rsquo;t be found." ) {
         $translated = "Page introuvable.";
@@ -34,10 +34,12 @@ function vdn_custom_admin_css() {
         #event_tribe_organizer.eventtable{ 
             display: none !important;
         }
+    </style>
 
     <?php
     if ( !vdn_is_admin() ){
     ?>
+    <style>
         #groups-permissions {
             visibility: hidden;
         }
@@ -126,15 +128,18 @@ function vdn_get_club_by_slug($slug) {
     return isset($clubs[0])?$clubs[0]:null;
 }
 
-function get_vdn_tags_html($post){
+/*
+ * Get html for special VDN flags
+ */
+function get_vdn_special_flags($post){
     $author_id=$post->post_author;
     $output = '';
     if(strtoupper(get_the_author_meta('user_nicename', $author_id))=='BSF'){
-        $output .= '<span class="tag_by_BSF" title="Contenu proposé par Bibliothèques Sans Frontières">PAR BSF</span>';
+        $output .= '<span class="flag_by_BSF" title="Contenu proposé par Bibliothèques Sans Frontières">PAR BSF</span>';
     }
     // add flag if post from BSF
     if(get_the_author_meta('club', $author_id)!=''){
-        $output .= '<span class="tag_by_club" title="Contenu proposé par un club VDN">CLUB</span>';
+        $output .= '<span class="flag_by_club" title="Contenu proposé par un club VDN">CLUB</span>';
     }
     return $output;
 }
@@ -169,3 +174,20 @@ add_filter( 'get_the_archive_title', function ( $title ) {
     }
     return $title;
 }, 11);
+
+
+/*
+ * Find first thematique category for a post
+ */
+function get_first_thematique_category($post){
+    $parent_category_slug = 'fiches-thematiques';
+    $parent_category = get_category_by_slug($parent_category_slug);
+    $thematiques_categories = get_categories( array('parent' => $parent_category->term_id));
+    foreach($thematiques_categories as $thematiques_category) {
+        if(in_category($thematiques_category->slug, $post)){
+            //die(print_r($thematiques_category, true));
+            return $thematiques_category;
+        }
+    }
+    return null;
+}

@@ -56,7 +56,7 @@
 				}else{
 					echo '<ul>';
 					foreach($fiches as $fiche) {
-						echo "<li><a href='/fiche/{$fiche->post_name}'>{$fiche->post_title}</a>"/*.get_vdn_tags_html($fiche)*/."</li>";
+						echo "<li><a href='/fiche/{$fiche->post_name}'>{$fiche->post_title}</a>"/*.get_vdn_special_flags($fiche)*/."</li>";
 					}
 					echo "</ul>";
 					if($cat_query->found_posts > $max_fiches){

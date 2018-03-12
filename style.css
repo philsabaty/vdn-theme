@@ -5,7 +5,7 @@ Description: A child theme for VDN based on Zerif-Lite
 Author: Philippe Sabaty for BSF
 Author URI: https://www.malt.fr/profile/philippesabaty
 Template: zerif-lite
-Version: 0.1 
+Version: 1.1 
 */
 
 .vdn_nonbsf_disclaimer{
@@ -114,21 +114,35 @@ main.category-fiches-thematiques article.hentry{
     padding-bottom: 10px;
 }
 
-.tag_by_club,
-.tag_by_BSF{
+.flag_by_club,
+.flag_by_BSF{
     font-size: 10px;
     padding:4px;
     margin:4px;
     text-align:center;
-    cursor:default;
+    cursor:help;
     color:#fff;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 6px;
     font-weight: bold;
+    border: 1px #fff solid;
 }
-.tag_by_BSF{background-color: #ea5951;}
-.tag_by_club{background-color: #5171b6;}
+.flag_by_BSF{background-color: #ea5951;}
+.flag_by_club{background-color: #5171b6;}
+
+.special_flags_on_fiche{
+    position:absolute;
+    top:80px;
+    left:80px;
+}
+
+.PDF_link_on_fiche{
+    position:absolute;
+    top:80px;
+    right:80px;
+}
+
 /* 
 	WP autosearch settings.
 	some color settings are restricted to pro version.
@@ -266,4 +280,70 @@ a.simplefavorite-button{
 .vdn-profile .um-header.no-cover{
     padding-bottom: 0;
     border-bottom-width:0;
+}
+
+/* -- BSF DESIGN ----------------------------------------------- */
+
+body.single-fiche article.fiche header{
+    /*background-color: #ea5b36;*/
+    background-color: #e95a51;
+    color : #fff;
+    background-image: url('assets/images/corner-bg-m.png');
+    background-position:top right;
+    background-repeat: no-repeat;
+    padding-top:30px;
+    padding-bottom:10px;
+    padding-left:40px;
+    border-width: 0;
+    max-height: 248px;
+}
+
+body.single-fiche article.fiche header span.lighter{
+    background-color: #fe7979;
+    padding: 5px 10px;
+}
+body.single-fiche article.fiche header h1{
+    font-size:42px;
+    margin-top:16px;
+    margin-bottom:7px;
+}
+body.single-fiche article.fiche header h2{
+    font-weight:normal;
+    font-style:italic;
+    font-size:28px;
+}
+body.single-fiche article.fiche header a,
+body.single-fiche article.fiche header a:hover,
+body.single-fiche article.fiche header *{
+    color : #fff;
+}
+body.single-fiche article.fiche header h1.entry-title{
+    margin-bottom:15px ;
+}
+
+a.vdn_fiche_thumbnail{
+    float:left;
+    margin-right: 12px;
+}
+.vdn_info_fiche{
+    white-space: nowrap;
+    overflow:hidden;
+}
+
+.entry-header h1,
+.entry-header h2{
+    clear:none;
+}
+
+.cartouche_donnees_fiche{
+    border:2px #e95a51 solid;
+    color:#e95a51;
+    padding:10px 0 10px 0;
+}
+
+.cartouche_donnees_fiche div{
+    padding:4px;
+}
+.cartouche_donnees_fiche div:nth-of-type(even){
+    background-color:#f2f2f2;
 }
