@@ -19,8 +19,10 @@ $events_label_singular = tribe_get_event_label_singular();
 $events_label_plural   = tribe_get_event_label_plural();
 
 $event_id = get_the_ID();
+$location_id = vdn_get_event_location_id($event_id);
 
 ?>
+<h1 class="entry-title">Agenda</h1>
 
 <div id="tribe-events-content" class="tribe-events-single">
 
@@ -30,11 +32,15 @@ $event_id = get_the_ID();
 
 	<!-- Notices -->
 	<?php tribe_the_notices() ?>
+	<?php echo tribe_event_featured_image( $event_id, 'thumbnail', false ); ?>
+<!--	--><?php //echo '<a class="vdn_fiche_thumbnail" href="' . esc_url( get_permalink() ) . '" title="' . the_title_attribute( 'echo=0' ) . '" >'.$post_thumbnail_url.'</a>'; ?>
 
-	<?php the_title( '<h1 class="tribe-events-single-event-title">', '</h1>' ); ?>
+	<?php the_title( '<h2 class="tribe-events-single-event-title">', '</h2>' ); ?>
 
 	<div class="tribe-events-schedule tribe-clearfix">
 		<?php echo tribe_events_event_schedule_details( $event_id, '<h2>', '</h2>' ); ?>
+		<br>Publié dans <?php echo get_the_category_list(', '); ?>
+		<br>Type : <?php the_selected_option_label('type'); ?>
 		<?php if ( tribe_get_cost() ) : ?>
 			<span class="tribe-events-cost"><?php echo tribe_get_cost( null, true ) ?></span>
 		<?php endif; ?>
@@ -55,7 +61,7 @@ $event_id = get_the_ID();
 	<?php while ( have_posts() ) :  the_post(); ?>
 		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<!-- Event featured image, but exclude link -->
-			<?php echo tribe_event_featured_image( $event_id, 'full', false ); ?>
+			
 
 			<!-- Event content -->
 			<?php do_action( 'tribe_events_single_event_before_the_content' ) ?>

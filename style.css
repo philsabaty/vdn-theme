@@ -283,9 +283,17 @@ a.simplefavorite-button{
 }
 
 /* -- BSF DESIGN ----------------------------------------------- */
-
+/*
+.widget .widget-title::before{
+    content:none;
+    display:none;
+}
+.widget .widget-title{
+    -webkit-box-shadow: 0 0 11px 0 rgba(50, 50, 50, 0.08);
+    box-shadow: 0 0 11px 0 rgba(50, 50, 50, 0.08);
+}
+*/
 body.single-fiche article.fiche header{
-    /*background-color: #ea5b36;*/
     background-color: #e95a51;
     color : #fff;
     background-image: url('assets/images/corner-bg-m.png');
@@ -346,4 +354,24 @@ a.vdn_fiche_thumbnail{
 }
 .cartouche_donnees_fiche div:nth-of-type(even){
     background-color:#f2f2f2;
+}
+
+/*tribe events customs*/
+.tribe-events-event-image{
+    float:left;
+    margin:0 10px 10px 0;
+}
+.single-tribe_events .tribe-events-event-image{
+    clear:none !important;
+}
+
+.tribe-events-single h2,
+.tribe-events-single h1{
+    clear:none !important;
+}
+.tribe-events-loop .tribe-events-event-meta{
+    clear:right !important;
+}
+.tribe-events-list .tribe-events-loop .tribe-events-event-image{
+    width:150px !important;
 }

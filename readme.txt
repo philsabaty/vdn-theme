@@ -18,3 +18,4 @@ https://github.com/philsabaty/vdn-companion
 * Added custom html/css design for CPT Fiche
 * Added custom images for CPT Fiche design
 * Added events map on page Agenda
+* Added custom html/css design for events
