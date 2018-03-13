@@ -56,28 +56,6 @@ function change_event_type_args ( $args ) {
 }
 
 /*
- * Request google geocoding service
- */
-function geocoding_sync($address, $API_KEY){
-    $address = urlencode($address);
-    $url = "https://maps.googleapis.com/maps/api/geocode/json?address={$address}&key={$API_KEY}";
-    $resp_json = file_get_contents($url);
-    $resp = json_decode($resp_json, true);
-    if($resp['status']=='OK'){
-        // get the important data
-        $lati = isset($resp['results'][0]['geometry']['location']['lat']) ? $resp['results'][0]['geometry']['location']['lat'] : "";
-        $longi = isset($resp['results'][0]['geometry']['location']['lng']) ? $resp['results'][0]['geometry']['location']['lng'] : "";
-        $formatted_address = isset($resp['results'][0]['formatted_address']) ? $resp['results'][0]['formatted_address'] : "";
-
-        return array(
-            'lat' => $lati,
-            'lng' => $longi,
-            'formatted_address' => $formatted_address);
-    }
-    return false;
-}
-
-/*
  * Returns int group_id for "ReferentsClub".
  * Group will be created if it doesn't exist.
  */
