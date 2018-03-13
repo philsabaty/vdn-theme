@@ -42,8 +42,6 @@
 			</span>
 		<?php
 		}else{
-			//$post_thumbnail_url = get_the_post_thumbnail( get_the_ID(), 'zerif-post-thumbnail' );
-			$post_thumbnail_url = get_the_post_thumbnail( get_the_ID(), array(150,150) );
 			//echo '<div class="post-img-wrap">';
 			echo '<a class="vdn_fiche_thumbnail" href="' . esc_url( get_permalink() ) . '" title="' . the_title_attribute( 'echo=0' ) . '" >'.$post_thumbnail_url.'</a>';
 			//echo '</div>';
