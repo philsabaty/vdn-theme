@@ -21,14 +21,17 @@ do_action( 'tribe_events_before_template' );
 	<p><br>Prenez connaissance de toutes les activités Voyageurs du Numérique de votre région et
 		référencez les vôtres : formation d’animateurs organisées par Bibliothèques Sans
 		Frontières, formation complémentaire sur un outil ou une méthode, apéro d’échange de
-		bonnes pratiques, mais aussi les ateliers organisées par les clubs !</p>
-		<?php 
-		if(is_user_logged_in()){
-			echo '<div style="text-align:center; clear:both">';
-			echo '	<a href="/wp-admin/post-new.php?post_type=tribe_events" class="btn btn-primary custom-button red-btn">Ajoutez un événement</a><br>&nbsp;';
-			echo '</div>';
-		}
-		?>
+		bonnes pratiques, mais aussi les ateliers organisées par les clubs !
+	</p>
+	<?php 
+	if(is_user_logged_in()){
+		echo '<div style="text-align:center; clear:both">';
+		echo '	<a href="/wp-admin/post-new.php?post_type=tribe_events" class="btn btn-primary custom-button red-btn">Ajoutez un événement</a><br>&nbsp;';
+		echo '</div>';
+	}
+	echo do_shortcode('[vdn_event_map]');
+	echo '<br>&nbsp;<br>'
+	?>
 		
 	<!-- Tribe Bar -->
 <?php tribe_get_template_part( 'modules/bar' ); ?>
