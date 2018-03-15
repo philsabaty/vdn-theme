@@ -88,7 +88,9 @@ function redirect_category_to_club(){
 /*
  * Fill Club-selection input with existing clubs.
  * (this callback is set in Ultimate members admin settings)
+ * DISABLED : club is no longer managed by Ultimate members plugin
  */
+/*
 function fill_um_select_dropdown_options_with_clubs(){
     // get all clubs
     $query = new WP_Query( array( 'post_type' => 'club' ) );
@@ -102,6 +104,7 @@ function fill_um_select_dropdown_options_with_clubs(){
 
     return $dropdown_options;
 }
+*/
 
 /**
  * Redirect users after login.

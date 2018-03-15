@@ -15,6 +15,7 @@
 				</div>
 				<div class="col-lg-7 col-sm-7" style="overflow-x:hidden;">
 					<?php
+                    $club_slug = get_user_club();
                     if ( um_is_on_edit_profile() ){
                         ?>
                         <p>
@@ -26,7 +27,6 @@
                     }
                     if(get_current_user_id()!=um_user('ID') && !vdn_is_admin()){
                         ?>
-                        (filtrage data)
                         <style type="text/css">
                             .um-field-adresse,
                             .um-field-telephone,
@@ -38,22 +38,33 @@
                         </style>
                         <?php
                     }
-                    $club_slug = um_profile('club');
-                    if($club_slug==null && get_current_user_id()==um_user('ID')) {
+                    if(get_current_user_id()==um_user('ID')) {
                         ?>
                         <h3>Bienvenue !</h3>
                         <p>
                             Pour bien démarrer sur Voyageurs du Numérique, commencez par nous donner quelques
-                            informations, et surtout choisir votre club !
+                            informations. 
+                            <br><br>la plupart ne seront <u>pas visibles</u> par les autres utilisateurs.
+                            Seuls votre structure de rattachement et la ville seront visibles par tous.
                             <br>
                             <a href="<?php echo get_site_url(null, '/user/' . um_user('user_login') . '/?profiletab=main&um_action=edit'); ?>"><b>Cliquez
                                     ici pour modifier votre profil</b></a>
                         </p>
                         <?php
+                        if($club_slug==null){
+                            ?>
+                            <p>
+                                <b>Vous n'êtes membre d'aucun club !</b>
+                                <br>Pour ne pas rester seul, rendez-vous sur la <a href="<?php echo get_site_url(null, '/les-clubs/'); ?>">liste des clubs</a>, puis cliquez sur "Devenir Membre".
+                                
+                            </p>
+                            <?php
+                        }
                     }
-                    if($club_slug!=null && get_referent_for_club($club_slug)==um_user('ID')) {
+                    if($club_slug!=null) {
                         $club = vdn_get_club_by_slug($club_slug);
-                        echo "<div><strong>Référent(e) du club <a href='".get_site_url(null, '/club/'.$club_slug)."'>{$club->post_title}</a></strong></div>";
+                        $role_in_club = (get_referent_for_club($club_slug)==um_user('ID'))?'Référent(e)':'Membre';
+                        echo "<div><strong>$role_in_club du club <a href='".get_site_url(null, '/club/'.$club_slug)."'>{$club->post_title}</a></strong></div>";
                     }
 						
 						$nav = $ultimatemember->profile->active_tab;

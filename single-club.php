@@ -89,8 +89,7 @@ get_header(); ?>
                                                 <li>
                                                     <h4>Référent</h4>
                                                     <a href="<?php echo $referent_url;?>"><?php echo $referent_name;?></a> <br>
-                                                    <?php echo $fields['contact_du_referent']['value'];?> <br>
-                                                    <?php echo $fields['telephone_du_referent']['value'];?> 
+                                                    <!--<?php //echo $fields['contact_du_referent']['value'];?>-->
                                                 </li>
                                             </ul>
                                         </div>
@@ -119,7 +118,7 @@ get_header(); ?>
                                     foreach($search_posts as $search_post){
                                         echo "<li><a href='".get_permalink($search_post)."'>{$search_post->post_title}</a></li>";
                                     }
-                                    if(um_profile('club')==$club_slug){
+                                    if(get_user_club()==$club_slug){
                                         echo '<li><a href="'.get_site_url(null, '/wp-admin/post-new.php?post_type=fiche').'"><strong>Ajoutez une fiche</strong></a></li>';
                                     }
                                     ?>
@@ -137,7 +136,7 @@ get_header(); ?>
                                         foreach($search_posts as $search_post){
                                             echo "<li><a href='/calendar'>{$search_post->post_title}</a></li>";
                                         }
-                                        if(um_profile('club')==$club_slug){
+                                        if(get_user_club()==$club_slug){
                                             echo '<li><a href="'.get_site_url(null, '/wp-admin/post-new.php?post_type=tribe_events').'"><strong>Ajoutez un évènement</strong></a></li>';
                                         }
                                         ?>
@@ -157,7 +156,7 @@ get_header(); ?>
                                         foreach($search_posts as $search_post){
                                             echo "<li><a href='".get_permalink($search_post)."'>{$search_post->post_title}</a></li>";
                                         }
-                                        if(um_profile('club')==$club_slug){
+                                        if(get_user_club()==$club_slug){
                                             echo '<li><a href="'.get_site_url(null, '/wp-admin/post-new.php?post_type=post').'"><strong>Ajoutez un article</strong></a></li>';
                                         }
                                         ?>
@@ -178,11 +177,17 @@ get_header(); ?>
                                         }else{
                                             foreach($users as $id=>$user){
                                                 $userLink = get_site_url(null, '/user/'.$user->user_nicename);
-                                                echo "<li><a href='$userLink'>{$user->display_name}</a></li>";
+                                                $user_extra = '';
+                                                if($user->ID==get_current_user_id()){
+                                                    $membership_confirm = "return confirm('Etes-vous sûr(e) de vouloir quitter ce club ?')";
+                                                    $user_extra = "<small><a onclick=\"$membership_confirm\" href=\"javascript:send_membership_form('-1')\" style='color:red'>(partir ?)</a></small>";
+                                                }
+                                                echo "<li><a href='$userLink'>{$user->display_name}</a> $user_extra</li>";
                                             }
                                         }
-                                        if( ! user_has_club() ){
-                                            echo '<li><strong><a href="'.get_site_url(null, '/user/' . um_user('user_login') . '/?profiletab=main&um_action=edit').'">Devenir membre</strong></a></li>';
+                                        if(get_user_club()!=$club_slug){
+                                            $membership_confirm = (get_user_club()!=null)?"return confirm('Vous êtes déjà membre d un club. Voulez-vous en changer pour celui-ci ?')":'';
+                                            echo "<li><strong><a onclick=\"$membership_confirm\" href=\"javascript:send_membership_form('$club_slug')\">Devenir membre</a></strong></li>";
                                         }
                                         ?>
                                         
@@ -190,11 +195,26 @@ get_header(); ?>
                                     </ul>
                                 </div>
                             </div>
-                            <?php
-                                $club = um_profile('club');
-                                if($club==null){
-                                    echo '<h3><br><a href="'.get_site_url(null, '/user/' . um_user('user_login') . '/?profiletab=main&um_action=edit').'">&gt; Modifiez votre profil pour rejoindre ce club</a></h3>';        
+                            <?php                                    
+                            ?>
+                            <form method="POST" action="" id="membership_form">
+                                <input type="hidden" id="membership_form_club_slug" name="club_slug" value="">
+                            </form>
+                            <script>
+                                function send_membership_form(club_slug){
+                                    document.getElementById('membership_form_club_slug').value = club_slug;
+                                    document.getElementById('membership_form').submit();
                                 }
+                            </script>
+                            <?php
+                            if(isset($_POST['club_slug'])){
+                                if($_POST['club_slug']=='-1'){
+                                    unset_user_club();
+                                }else{
+                                    set_user_club($club_slug);
+                                }
+                                wp_redirect(get_site_url(null, "/club/$club_slug"));
+                            }
                             ?>
                             
                         </div><!-- .listpost-content-wrap -->
