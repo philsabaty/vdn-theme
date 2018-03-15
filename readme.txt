@@ -20,3 +20,5 @@ https://github.com/philsabaty/vdn-companion
 * Added events map on page Agenda
 * Added custom html/css design for events
 * Club membership managed by user_meta (no more UM)
+* PDF link temporarily disabled on fiches
+* Modified profile template

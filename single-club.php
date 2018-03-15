@@ -134,10 +134,10 @@ get_header(); ?>
                                             echo "<i>Aucun évènement pour l'instant</i>";
                                         }
                                         foreach($search_posts as $search_post){
-                                            echo "<li><a href='/calendar'>{$search_post->post_title}</a></li>";
+                                            echo "<li><a href='".get_permalink($search_post)."'>{$search_post->post_title}</a></li>";
                                         }
                                         if(get_user_club()==$club_slug){
-                                            echo '<li><a href="'.get_site_url(null, '/wp-admin/post-new.php?post_type=tribe_events').'"><strong>Ajoutez un évènement</strong></a></li>';
+                                            echo '<li><a href="'.get_site_url(null, '/wp-admin/post-new.php?post_type=tribe_events').'"><strong>Ajoutez un événement</strong></a></li>';
                                         }
                                         ?>
                                         
