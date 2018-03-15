@@ -68,7 +68,7 @@
 
 				echo "<div class='vdn_info_fiche'>Publié par $author_link  le ".get_the_date( 'j F Y' )." $categories_html</div>";
 				echo '<span class="">'.get_vdn_special_flags($post).'</span>';
-				edit_post_link( __( 'Edit', 'zerif-lite' ), ' &nbsp; <span class="not_in_pdf">', '</span>' );
+				//edit_post_link( __( 'Edit', 'zerif-lite' ), ' &nbsp; <span class="not_in_pdf">', '</span>' );
 				echo ' &nbsp; <a class="not_in_pdf" target="_blank" rel="noindex,nofollow" href="'.esc_url ( add_query_arg ( 'format', 'pdf', get_permalink ( $post->ID ) ) ).'">Télécharger au format PDF</a>';
 				echo ' &nbsp; <span class="not_in_pdf">'.get_favorites_button().'</span>';
 				?>
