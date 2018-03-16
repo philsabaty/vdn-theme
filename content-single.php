@@ -27,7 +27,7 @@
                 echo '<br><br>';
 			}
 			the_content();
-
+			display_bsf_content_disclaimer(get_the_ID());
 			wp_link_pages(
 				array(
 					'before' => '<div class="page-links">' . __( 'Pages:', 'zerif-lite' ),

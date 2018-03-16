@@ -4,25 +4,27 @@
  *
  * @package zerif-lite
  */
+global $VDN_CONFIG;
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemtype="http://schema.org/BlogPosting" itemtype="http://schema.org/BlogPosting">
 	<div class="listpost-content-wrap-full">
 	<div class="list-post-top">
 
-	<header class="entry-header">
+	<header class="entry-header type_fiche_<?php echo the_field('type'); ?>">
 
         <?php
 		$author_url = get_site_url(null, '/user/'.get_the_author_meta('nicename'));
 		$author_link = (get_the_author()=='BSF')?get_the_author():"<a href='$author_url'>".get_the_author()."</a>";
 		$post_thumbnail_url = get_the_post_thumbnail( get_the_ID(), array(150,150) );
+		$fiche_target = ($VDN_CONFIG['open_fiches_in_new_tab'])?"target='_blank'":'';
 		
         if ( is_search() || is_archive() || vdn_get_searched_category_id()!=null) {
 			//echo '<div class="post-img-wrap">';
-			echo '<a class="vdn_fiche_thumbnail" href="' . esc_url( get_permalink() ) . '" title="' . the_title_attribute( 'echo=0' ) . '" >'.$post_thumbnail_url.'</a>';
+			echo '<a class="vdn_fiche_thumbnail" href="' . esc_url( get_permalink() ) . '" title="' . the_title_attribute( 'echo=0' ) . '" '.$fiche_target.'>'.$post_thumbnail_url.'</a>';
 			//echo '</div>';
             ?>
-            <h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+            <h2 class="entry-title"><a href="<?php the_permalink(); ?>" <?php echo $fiche_target; ?>><?php the_title(); ?></a></h2>
 
 			<span class="tags-links">
 				<?php the_selected_option_label('type'); ?> - <?php the_selected_option_label('niveau'); ?> - <?php the_field('public'); ?>
@@ -68,7 +70,7 @@
 
 				echo "<div class='vdn_info_fiche'>Publié par $author_link  le ".get_the_date( 'j F Y' )." $categories_html</div>";
 				echo '<span class="">'.get_vdn_special_flags($post).'</span>';
-				//edit_post_link( __( 'Edit', 'zerif-lite' ), ' &nbsp; <span class="not_in_pdf">', '</span>' );
+				edit_post_link( __( 'Edit', 'zerif-lite' ), ' &nbsp; <span class="not_in_pdf">', '</span>' );
 				echo ' &nbsp; <a class="not_in_pdf" target="_blank" rel="noindex,nofollow" href="'.esc_url ( add_query_arg ( 'format', 'pdf', get_permalink ( $post->ID ) ) ).'">Télécharger au format PDF</a>';
 				echo ' &nbsp; <span class="not_in_pdf">'.get_favorites_button().'</span>';
 				?>
@@ -99,18 +101,6 @@
 	} else {
 		echo '<div class="entry-content">';
 			
-        // add a disclaimer message for non-BSF fiches
-        if(get_the_author()!='BSF'){
-            ?>
-            <div class="vdn_nonbsf_disclaimer">
-                Cette fiche a été rédigée par un membre de la communauté des Voyageurs du Numérique. <br>
-                Afin d'inciter la créativité des participants, l'équipe de Voyageurs du Numérique publie ce contenu sans validation préalable.
-                <br><br>Bibliothèques sans Frontières n'engage pas sa responsabilité sur le contenu de ces fiches. <br>
-                Si un contenu vous semble inapprorié, merci de <a href="<?php echo site_url() ?>/ecrivez-nous/">nous le signaler</a>. <br><br>
-                L'équipe des Voyageurs du Numérique.
-            </div>
-            <?php
-        }
 		?>
 		<div class="row" style="border-bottom:2px #e95a51 solid;">
 			<div class="col-sm-6 cartouche_donnees_fiche">
@@ -143,6 +133,7 @@
 		<hr style="height:2px; border-color:#e95a51; background-color:#e95a51">
 		<?php
         the_content();
+		display_bsf_content_disclaimer(get_the_ID());
         wp_link_pages(
 			array(
 				'before' => '<div class="page-links">' . __( 'Pages:', 'zerif-lite' ),

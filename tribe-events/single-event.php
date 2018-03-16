@@ -10,7 +10,6 @@
  * @version 4.6.3
  *
  */
-
 if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
@@ -77,6 +76,7 @@ $location_id = vdn_get_event_location_id($event_id);
 			<?php do_action( 'tribe_events_single_event_after_the_meta' ) ?>
 		</div> <!-- #post-x -->
 		<?php if ( get_post_type() == Tribe__Events__Main::POSTTYPE && tribe_get_option( 'showComments', false ) ) comments_template() ?>
+		<?php display_bsf_content_disclaimer(get_the_ID()); ?>
 	<?php endwhile; ?>
 
 	<!-- Event footer -->

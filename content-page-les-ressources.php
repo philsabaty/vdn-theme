@@ -5,6 +5,7 @@
  * @package zerif-lite
  */
 
+global $VDN_CONFIG;
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
@@ -36,6 +37,7 @@
 			$categories = get_categories( array(
 				'parent' => $parent_category->term_id,
 				'hide_empty' => false) );
+			$fiche_target = ($VDN_CONFIG['open_fiches_in_new_tab'])?"target='_blank'":'';
 			$count = 0;
 			foreach($categories as $category) {
 				//echo  do_shortcode('[catlist post_type="fiche" name="'.$category->slug.'"]');
@@ -46,7 +48,6 @@
 					'cat' => $category->term_id
 				));
 				$fiches = $cat_query->posts;
-				//echo('<pre>'.print_r($fiches, true).'</pre>');
 				$title_href = empty($fiches) ? '' : ('href="'.get_site_url(null, "category/$parent_category_slug/{$category->slug}").'"');
 				$noresult_info = "Seules quelques fiches sont visibles aux utilisateurs non-connectés. En créant un club, vous avez accés à l ensemble de notre base";
 				echo "<div class='col-lg-6 col-sm-6 color_bsf_1 bloc_d_items widget'>";
@@ -56,7 +57,7 @@
 				}else{
 					echo '<ul>';
 					foreach($fiches as $fiche) {
-						echo "<li><a href='/fiche/{$fiche->post_name}'>{$fiche->post_title}</a>"/*.get_vdn_special_flags($fiche)*/."</li>";
+						echo "<li><a href='/fiche/{$fiche->post_name}' $fiche_target>{$fiche->post_title}</a>"/*.get_vdn_special_flags($fiche)*/."</li>";
 					}
 					echo "</ul>";
 					if($cat_query->found_posts > $max_fiches){

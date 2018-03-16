@@ -12,7 +12,8 @@ Version: 1.1
     margin:10px 30px;
     padding:20px;
     border:1px #ea5951 solid;
-    background-color:#eee;
+    background-color:#f0f0f0;
+    font-size:12px;
 }
 
 ul.ui-autocomplete{
@@ -303,11 +304,14 @@ body.single-fiche article.fiche header{
     padding-bottom:10px;
     padding-left:40px;
     border-width: 0;
-    max-height: 248px;
+    /*max-height: 248px;*/
 }
+body.single-fiche article.fiche header.type_fiche_activite{background-color: #e95a51;}
+body.single-fiche article.fiche header.type_fiche_parcours{background-color: #5171b6;}
+body.single-fiche article.fiche header.type_fiche_outil{background-color: #888888;}
 
 body.single-fiche article.fiche header span.lighter{
-    background-color: #fe7979;
+    background-color: rgba(255, 255, 255, 0.5);
     padding: 5px 10px;
 }
 body.single-fiche article.fiche header h1{
