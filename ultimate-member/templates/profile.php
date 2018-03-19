@@ -96,7 +96,7 @@
                 echo "<li><a href='".get_permalink($user_post)."'>{$user_post->post_title}</a></li>";
             }
             if(get_current_user_id()==um_user('ID')) {
-                echo '<li><a href="/wp-admin/post-new.php?post_type=post"><strong>Créer un article</strong></a></li>';
+                echo '<li><a href="/wp-admin/post-new.php?post_type=post"><strong>Rédiger un article</strong></a></li>';
             }
             echo '</ul>';
 

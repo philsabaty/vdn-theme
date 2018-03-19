@@ -5,13 +5,15 @@
  * @package zerif-lite
  */
 global $VDN_CONFIG;
+$main_css_color = '#e95a51';
+@$main_css_color = '#'.($VDN_CONFIG['vdn_fiche_types'][get_field('type', $post->ID)]['color']);
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemtype="http://schema.org/BlogPosting" itemtype="http://schema.org/BlogPosting">
 	<div class="listpost-content-wrap-full">
 	<div class="list-post-top">
 
-	<header class="entry-header type_fiche_<?php echo the_field('type'); ?>">
+	<header class="entry-header" style="background-color:<?php echo $main_css_color; ?>">
 
         <?php
 		$author_url = get_site_url(null, '/user/'.get_the_author_meta('nicename'));
@@ -102,8 +104,8 @@ global $VDN_CONFIG;
 		echo '<div class="entry-content">';
 			
 		?>
-		<div class="row" style="border-bottom:2px #e95a51 solid;">
-			<div class="col-sm-6 cartouche_donnees_fiche">
+		<div class="row" style="border-bottom:2px <?php echo $main_css_color; ?> solid;">
+			<div class="col-sm-6 cartouche_donnees_fiche" style="border-color:<?php echo $main_css_color; ?>; color:<?php echo $main_css_color; ?>;">
 				<div><strong>Public</strong> : <?php the_field('public'); ?></div>
 				<div><strong>Durée de préparation</strong> : <?php the_field('duree_preparation'); ?></div>
 				<div><strong>Durée de l'activité</strong> : <?php the_field('duree_animation'); ?></div>
@@ -116,7 +118,7 @@ global $VDN_CONFIG;
 			</div>
 		</div>
 		<br>&nbsp;<br>
-		<div style="color:#e95a51; padding: 10px 10px 10px 10px;">
+		<div style="color:<?php echo $main_css_color; ?>; padding: 10px 10px 10px 10px;">
 			<h3>Objectifs pédagogiques :</h3>
 			<?php the_field('objectifs_pedagogiques'); ?>
 		</div>
@@ -130,7 +132,7 @@ global $VDN_CONFIG;
 			</div>
 		</div>
 		<br style="clear:both;">
-		<hr style="height:2px; border-color:#e95a51; background-color:#e95a51">
+		<hr style="height:2px; border-color:<?php echo $main_css_color; ?>; background-color:<?php echo $main_css_color; ?>;">
 		<?php
         the_content();
 		display_bsf_content_disclaimer(get_the_ID());

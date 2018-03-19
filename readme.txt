@@ -22,3 +22,10 @@ https://github.com/philsabaty/vdn-companion
 * Club membership managed by user_meta (no more UM)
 * PDF link temporarily disabled on fiches
 * Modified profile template
+
+
+-- V1.2 Changelog --
+* Added support for multiple lines title in fiche display
+* Added different header colors based on fiche type
+* Many settings moved to vdn-companion/config.php
+* Improved PDF rendering

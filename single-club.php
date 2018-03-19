@@ -2,6 +2,7 @@
 /**
  * Template Name: Club
  */
+global $VDN_CONFIG;
 get_header(); ?>
 
 <div class="clear"></div>
@@ -52,7 +53,7 @@ get_header(); ?>
                                         </div>
                                         <div class="col-lg-6 col-sm-6 bloc_d_items info_club">
                                             <h3>Informations</h3>
-                                            <?php edit_post_link( "Modifier les infos de mon clubs", '<br><span class="edit-link">', '</span>' ); ?>
+                                            <?php edit_post_link( "Modifier les infos de mon club", '<br><span class="edit-link">', '</span>' ); ?>
                                             <ul>
                                                 <?php
                                                 $referent_name = get_the_author_meta('display_name');
@@ -89,7 +90,11 @@ get_header(); ?>
                                                 <li>
                                                     <h4>Référent</h4>
                                                     <a href="<?php echo $referent_url;?>"><?php echo $referent_name;?></a> <br>
-                                                    <!--<?php //echo $fields['contact_du_referent']['value'];?>-->
+                                                    <?php
+                                                    if((get_user_club()==$club_slug) && ($fields['contact_du_referent']['value']!='') && $VDN_CONFIG['display_referent_email']){
+                                                        echo "<a href='mailto:{$fields['contact_du_referent']['value']}' style='color:#404040'>{$fields['contact_du_referent']['value']}</a>";
+                                                    }
+                                                    ?>
                                                 </li>
                                             </ul>
                                         </div>

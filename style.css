@@ -5,7 +5,7 @@ Description: A child theme for VDN based on Zerif-Lite
 Author: Philippe Sabaty for BSF
 Author URI: https://www.malt.fr/profile/philippesabaty
 Template: zerif-lite
-Version: 1.1 
+Version: 1.2 
 */
 
 .vdn_nonbsf_disclaimer{
@@ -306,10 +306,11 @@ body.single-fiche article.fiche header{
     border-width: 0;
     /*max-height: 248px;*/
 }
+/*
 body.single-fiche article.fiche header.type_fiche_activite{background-color: #e95a51;}
 body.single-fiche article.fiche header.type_fiche_parcours{background-color: #5171b6;}
 body.single-fiche article.fiche header.type_fiche_outil{background-color: #888888;}
-
+*/
 body.single-fiche article.fiche header span.lighter{
     background-color: rgba(255, 255, 255, 0.5);
     padding: 5px 10px;
