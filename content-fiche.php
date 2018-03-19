@@ -8,12 +8,14 @@ global $VDN_CONFIG;
 $main_css_color = '#e95a51';
 @$main_css_color = '#'.($VDN_CONFIG['vdn_fiche_types'][get_field('type', $post->ID)]['color']);
 ?>
-
+<style>
+	body.single-fiche article.fiche header{background-color: <?php echo $main_css_color; ?>;}
+</style>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemtype="http://schema.org/BlogPosting" itemtype="http://schema.org/BlogPosting">
 	<div class="listpost-content-wrap-full">
 	<div class="list-post-top">
 
-	<header class="entry-header" style="background-color:<?php echo $main_css_color; ?>">
+	<header class="entry-header">
 
         <?php
 		$author_url = get_site_url(null, '/user/'.get_the_author_meta('nicename'));
