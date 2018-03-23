@@ -29,3 +29,6 @@ https://github.com/philsabaty/vdn-companion
 * Added different header colors based on fiche type
 * Many settings moved to vdn-companion/config.php
 * Improved PDF rendering
+
+-- V1.3 Changelog --
+* Added support for multiple-lines support in event titles
