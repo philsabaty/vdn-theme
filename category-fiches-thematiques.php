@@ -43,7 +43,9 @@ get_header(); ?>
 				<div class="row">
 					<?php while ( have_posts() ) {
 						the_post();
-						get_template_part( 'content-fiche' );
+						if(get_post_type($post->ID)=='fiche'){
+							get_template_part( 'content-fiche' );
+						}
 						?>
 						
 						<!--<div class="col-lg-3 col-sm-3 bloc_recherche_fiche">

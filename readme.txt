@@ -32,3 +32,8 @@ https://github.com/philsabaty/vdn-companion
 
 -- V1.3 Changelog --
 * Added support for multiple-lines support in event titles
+
+-- V1.5 Changelog --
+* Prevent regular posts to display in thematique pages
+* Fixed minor bug in club widget
+* Removed title underline overlapping posts thumbnails

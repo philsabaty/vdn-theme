@@ -98,11 +98,23 @@ function get_referent_for_club($club_slug){
 }
 
 function vdn_get_club_by_slug($slug) {
+    global $wpdb;
+    $clubs = $wpdb->get_results("
+            SELECT $wpdb->posts.* 
+            FROM $wpdb->posts
+            WHERE $wpdb->posts.post_name = '$slug' 
+            AND $wpdb->posts.post_status = 'publish' 
+            AND $wpdb->posts.post_type = 'club'
+        LIMIT 1", OBJECT);
+    
+    /* 
+    // this method is nicer but doesn't work in /category/fiches-thematiques/xxx urls (!!??)
     $clubs = get_posts(array(
         'name'        => $slug,
         'post_type'   => 'club',
         'numberposts' => 1
     ));
+    */
     return isset($clubs[0])?$clubs[0]:null;
 }
 
