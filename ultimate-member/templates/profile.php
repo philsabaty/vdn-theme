@@ -25,7 +25,6 @@
 
         if ( um_is_on_edit_profile() ) { ?><form method="post" action=""><?php } ?>
             <a name="contributions">&nbsp;</a>
-            <?php if ( um_is_on_edit_profile() ) { ?></form><?php } ?>
         <div class="row vdn-profile">
             <?php
             echo '<div class="col-sm-5 col-lg-5 bloc_d_items widget info_club">';
@@ -164,6 +163,7 @@
 					
 					?>
 				</div>
+            <?php if ( um_is_on_edit_profile() ) { ?></form><?php } ?>
 			</div> <!-- /.row -->
     </div>
         

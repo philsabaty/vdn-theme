@@ -37,3 +37,6 @@ https://github.com/philsabaty/vdn-companion
 * Prevent regular posts to display in thematique pages
 * Fixed minor bug in club widget
 * Removed title underline overlapping posts thumbnails
+
+-- V1.6 Changelog --
+* Fixed broken form on profile page
