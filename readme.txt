@@ -40,3 +40,8 @@ https://github.com/philsabaty/vdn-companion
 
 -- V1.6 Changelog --
 * Fixed broken form on profile page
+
+-- V1.7 Changelog --
+* New css rules to allow multi-line tags
+* Removed implicit pagination on items lists (club and profile)
+

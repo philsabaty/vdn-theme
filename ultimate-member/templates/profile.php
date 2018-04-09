@@ -29,7 +29,7 @@
             <?php
             echo '<div class="col-sm-5 col-lg-5 bloc_d_items widget info_club">';
             echo '<h2 style="border-bottom : 1px #ea5951 solid;">'.((get_current_user_id()==um_user('ID'))?'Mes':'Ses').' fiches</h2>';
-            $user_posts = get_posts( array('post_type'=>'fiche', 'author' => um_user('ID')) );
+            $user_posts = get_posts( array('post_type'=>'fiche', 'author' => um_user('ID'), 'numberposts' => -1) );
 
             if(empty($user_posts)){
                 echo "<span class='noresult'>Pas encore de publications.</span><br>";
@@ -67,7 +67,7 @@
             <?php
             echo '<div class="col-sm-5 col-lg-5 bloc_d_items widget info_club">';
             echo '<h2 style="border-bottom : 1px #ea5951 solid;">'.((get_current_user_id()==um_user('ID'))?'Mes':'Ses').' événements</h2>';
-            $user_posts = get_posts( array('post_type'=>'tribe_events', 'author' => um_user('ID')) );
+            $user_posts = get_posts( array('post_type'=>'tribe_events', 'author' => um_user('ID'), 'numberposts' => -1) );
             if(empty($user_posts)){
                 echo "<span class='noresult'>Pas encore de publications.</span><br>";
             }
@@ -86,7 +86,7 @@
             <?php
             echo '<div class="col-sm-5 col-lg-5 bloc_d_items widget info_club">';
             echo '<h2 style="border-bottom : 1px #ea5951 solid;">'.((get_current_user_id()==um_user('ID'))?'Mes':'Ses').' articles</h2>';
-            $user_posts = get_posts( array('post_type'=>'post', 'author' => um_user('ID')) );
+            $user_posts = get_posts( array('post_type'=>'post', 'author' => um_user('ID'), 'numberposts' => -1) );
             if(empty($user_posts)){
                 echo "<span class='noresult'>Pas encore de publications.</span><br>";
             }

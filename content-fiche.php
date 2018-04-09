@@ -87,8 +87,8 @@ $main_css_color = '#e95a51';
 					<div class="col-sm-3">
 						<span class='lighter vdn_info_fiche'><?php the_selected_option_label('niveau'); ?></span>
 					</div>
-					<div class="col-sm-6 vdn_info_fiche">
-						<span class='lighter tags-links'>Mots clés : <?php echo ($tags_list)?$tags_list:'<i>(aucun mot-clé)</i>'; ?></span>
+					<div class="col-sm-6">
+						<span class='lighter tags-links vdn_info_fiche' style="white-space: normal;">Mots clés : <?php echo ($tags_list)?$tags_list:'(aucun)'; ?></span>
 					</div>
 				</div>
 				<br>&nbsp;

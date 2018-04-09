@@ -116,7 +116,7 @@ get_header(); ?>
                                     <h2 class="widget-title">Ressources</h2>
                                     <ul>
                                     <?php
-                                    $search_posts = get_posts(array('category_name'	=> $club_code,'post_type' => 'fiche'));
+                                    $search_posts = get_posts(array('category_name'	=> $club_code,'post_type' => 'fiche', 'numberposts' => -1));
                                     if(empty($search_posts)){
                                         echo "<i>Aucune fiche pour l'instant</i>";
                                     }
@@ -134,7 +134,7 @@ get_header(); ?>
                                     <h2 class="widget-title">Agenda</h2>
                                     <ul>
                                         <?php
-                                        $search_posts = get_posts(array('category_name'	=> $club_code,'post_type' => 'tribe_events'));
+                                        $search_posts = get_posts(array('category_name'	=> $club_code,'post_type' => 'tribe_events', 'numberposts' => -1));
                                         if(empty($search_posts)){
                                             echo "<i>Aucun évènement pour l'instant</i>";
                                         }
@@ -154,7 +154,7 @@ get_header(); ?>
                                     <h2 class="widget-title">Blog</h2>
                                     <ul>
                                         <?php
-                                        $search_posts = get_posts(array('category_name'	=> $club_code,'post_type' => 'post'));
+                                        $search_posts = get_posts(array('category_name'	=> $club_code,'post_type' => 'post', 'numberposts' => -1));
                                         if(empty($search_posts)){
                                             echo "<i>Aucun article pour l'instant</i>";
                                         }
