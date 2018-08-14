@@ -91,8 +91,11 @@ get_header(); ?>
                                                     <h4>Référent</h4>
                                                     <a href="<?php echo $referent_url;?>"><?php echo $referent_name;?></a> <br>
                                                     <?php
-                                                    if((get_user_club()==$club_slug) && ($fields['contact_du_referent']['value']!='') && $VDN_CONFIG['display_referent_email']){
-                                                        echo "<a href='mailto:{$fields['contact_du_referent']['value']}' style='color:#404040'>{$fields['contact_du_referent']['value']}</a>";
+                                                    if(is_user_logged_in() && ($fields['contact_du_referent']['value']!='')){
+                                                        echo "<a href='mailto:{$fields['contact_du_referent']['value']}' style='color:#404040'>{$fields['contact_du_referent']['value']}</a><br>";
+                                                    }
+                                                    if(is_user_logged_in() && ($fields['telephone_du_referent']['value']!='')){
+                                                        echo "<a href='tel:{$fields['telephone_du_referent']['value']}' style='color:#404040'>{$fields['telephone_du_referent']['value']}</a><br>";
                                                     }
                                                     ?>
                                                 </li>
